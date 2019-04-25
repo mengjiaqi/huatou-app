@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "goods-ranking": "/components/goods-ranking"
-  },
-  "component": true
-}
