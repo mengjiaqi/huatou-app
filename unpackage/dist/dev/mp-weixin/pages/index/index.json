@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "content-main": "/pages/index/content-main",
+    "content-category": "/pages/index/content-category"
+  }
+}

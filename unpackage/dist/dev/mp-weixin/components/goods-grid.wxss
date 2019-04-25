@@ -1,0 +1,60 @@
+
+.goods {
+}
+.item {
+	width: 50%;
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.inner {
+	margin: 8rpx;
+	background: #FFFFFF;
+	border-radius: 8rpx;
+}
+.item view {
+	font-size: 24rpx;
+	line-height: 1.8em;
+}
+.item view.image {
+	font-size: 0;
+	line-height: 1em;
+	overflow: hidden;
+}
+.image image {
+	width: 100%;
+	height: none;
+}
+.detail {
+	padding: 8px;
+}
+.title {
+	overflow: hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	font-weight: bold;
+}
+.coupon text {
+	padding: 0.1em 0.3em;
+	border: 2rpx solid #FF3A30;
+	color: #FF3A30;
+	border-radius: 3rpx;
+	font-size: 18rpx;
+}
+.price .final {
+	color: #FF3A30;
+	font-weight: 700;
+}
+.price .reserve {
+	color: #666666;
+	text-decoration: line-through;
+	margin-left: 1em;
+}
+

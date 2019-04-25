@@ -1,0 +1,51 @@
+
+.main-swiper image {
+	width: 100%;
+}
+.channels {
+	border-right: 2rpx solid #F8F8F8;
+	border-bottom: 2rpx solid #F5F6F8;
+}
+.channels .items {
+	width: 20%;
+	border-left: 2rpx solid #F8F8F8;
+	border-top: 2rpx solid #F5F6F8;
+	color: #A5A7B2;
+}
+.panel {
+	margin-top: 20rpx;
+	background: #FFFFFF;
+	border-top: 2rpx solid #F5F6F8;
+}
+.panel:first-child {
+	margin-top: 0;
+	border-top: none;
+}
+.panel,
+.panel-header {
+	border-bottom: 2rpx solid #F5F6F8;
+}
+.panel-title {
+	line-height: 80rpx;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	padding: 0 16rpx;
+	font-weight: 700;
+}
+.panel-title .grace-icons {
+	color: #FF3A30;
+	margin-right: 0.5em;
+}
+.recommend .list {
+	display: none;
+	padding: 0 16rpx;
+}
+.recommend .list.current {
+	display: block;
+}
+.favorite .panel-body {
+	padding: 8rpx;
+}
+

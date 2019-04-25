@@ -1,0 +1,5 @@
+
+.tab-cats view:first-child {
+	margin-left: 16rpx;
+}
+

@@ -1,0 +1,61 @@
+
+.item {
+		padding: 20rpx 0;
+		border-bottom: 2rpx solid #F6F7F8;
+}
+.image {
+	font-size: 0;
+	-webkit-flex-basis: 240rpx;
+	    -ms-flex-preferred-size: 240rpx;
+	        flex-basis: 240rpx;
+}
+.image image {
+	width: 240rpx;
+	height: 240rpx;
+	border-radius: 6rpx;
+}
+.detail {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	    -ms-flex: 1;
+	        flex: 1;
+	margin-left: 20rpx;
+}
+.detail view {
+	font-size: 24rpx;
+	line-height: 1.2em;
+}
+.detail .title,
+.detail .price .final {
+	font-weight: 700;
+	font-size: 28rpx;
+}
+.title {
+	width: 100%;
+	overflow: hidden;/* 
+	white-space: nowrap;
+	text-overflow: ellipsis; */
+}
+.price .final {
+	color: #FF3A30;
+}
+.price .reserve {
+	text-decoration: line-through;
+	color: #666666;
+	margin-left: 16rpx;
+}
+.volume {
+	color: #333333;
+}
+.extra .coupon, .extra .profit {
+	padding: 0.3em 0.5em;
+	border-radius: 3rpx;
+	background: #FF3A30;
+	color: #FFFFFF;
+}
+.extra .profit {
+	background: #ffdddd;
+	color: #ee0000;
+	padding: 0.3em 1em;
+}
+
