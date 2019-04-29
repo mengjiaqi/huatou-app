@@ -7,7 +7,9 @@
 			}
 		}, {
 			"path": "pages/product/product",
-			"style": {}
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
 		}, {
 			"path": "pages/ucenter/ucenter",
 			"style": {
@@ -20,6 +22,11 @@
 			"path": "pages/search/search",
 			"style": {
 				"navigationBarTitleText": "搜索"
+			}
+		}, {
+			"path": "pages/product/detail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
 			}
 		}
 	],

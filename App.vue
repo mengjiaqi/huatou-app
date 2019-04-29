@@ -19,7 +19,7 @@
 	*{margin: 0; padding: 0;}
 	image{will-change: transform}
 	page, .page, .bg-default { background: #f8f8f8; }
-	.page-padding { padding: 16rpx ;}
+	.xl-padding { padding: 16rpx ;}
 	
 	.grace-tab-current {
 		color: #f15858;

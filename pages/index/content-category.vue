@@ -1,7 +1,7 @@
 <template>
 	<scroll-view class="content" scroll-y>
 		<!-- <view>{{banner}}</view> -->
-		<view class="grace-bg-white page-padding">
+		<view class="grace-bg-white xl-padding">
 			<goods-list :list="goods"></goods-list>
 		</view>
 	</scroll-view>
