@@ -1,7 +1,10 @@
 <template>
-	<view class="content">
-		{{cid}}
-	</view>
+	<scroll-view class="content" scroll-y>
+		<!-- <view>{{banner}}</view> -->
+		<view class="grace-bg-white page-padding">
+			<goods-list :list="goods"></goods-list>
+		</view>
+	</scroll-view>
 </template>
 
 <script>
@@ -10,7 +13,7 @@
 		data() {
 			return {
 				banner: null,
-				dataSource: null
+				goods: null
 			};
 		},
 		watch: {
@@ -22,8 +25,14 @@
 		},
 		methods: {
 			loadData() {
-				this.banner = true;
-				console.log(this.cid);
+				this.banner = this.cid;
+				const _self = this;
+				this.request({
+					url: '/top/dg-item-coupon?q=' + this.cid,
+					success({ data }) {
+						_self.goods = data.results.tbk_coupon;
+					}
+				})
 			}
 		}
 	}

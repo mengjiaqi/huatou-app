@@ -6,8 +6,13 @@ import GoodsGrid from './components/goods-grid';
 // import lazyLoader from './helpers/graceLazyload';
 // Vue.prototype.lazyLoader = lazyLoader;
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 Vue.prototype.CONSTS = CONSTS;
+Vue.prototype.request = options => {
+	options.url = 'https://wx.lpp.catkid.cn:10443' + options.url;
+	uni.request(options);
+};
+
 Vue.component('goods-list', GoodsList);
 Vue.component('goods-grid', GoodsGrid);
 

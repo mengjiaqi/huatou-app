@@ -1,5 +1,5 @@
 <template>
-	<scroll-view :scroll-y="true" class="content">
+	<scroll-view class="content" scroll-y>
 		<view class="panel">
 			<swiper class="main-swiper">
 				<swiper-item>
@@ -102,8 +102,8 @@
 		},
 		created() {
 			const _self = this;
-			uni.request({
-				url: 'http://localhost:8000/tbk/dg/item/coupon',
+			this.request({
+				url: '/top/dg-item-coupon?q=小龙虾',
 				success({ data }) {
 					_self.goods = data.results.tbk_coupon;
 				}
