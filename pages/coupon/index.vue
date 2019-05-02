@@ -49,7 +49,7 @@
 		},
 		onReady() {
 			const _self = this;
-			const system = this.CONSTS.SYSTEM;
+			const system = uni.getSystemInfoSync();
 			uni.createSelectorQuery().select('.tab-title-wrapper').boundingClientRect(data => {
 				_self.mainHeight = system.windowHeight - data.height;
 			}).exec();

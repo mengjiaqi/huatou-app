@@ -72,7 +72,13 @@
 			return {
 				recommend: 0,
 				goods: [],
-				swipers: [1, 1]
+				swipers: [{
+					src: 'http://temp.im/1125x552',
+					href: '/pages/coupon/index'
+				}, {
+					src: 'http://temp.im/1125x552',
+					href: '/pages/coupon/index'
+				}]
 			};
 		},
 		components: {

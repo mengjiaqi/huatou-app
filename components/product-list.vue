@@ -15,7 +15,7 @@
 							{{item.item_description}}
 						</view>
 					</view>
-					<view class="grace-space-between">
+					<view class="grace-space-between grace-flex-vbottom">
 						<view class="info">
 							<view class="price">
 								<text class="final">&yen; {{item.originalPrice}}</text>
@@ -102,7 +102,6 @@
 
 	.detail view {
 		font-size: 24upx;
-		line-height: 1.2em;
 	}
 
 	.detail .title,
@@ -133,11 +132,14 @@
 		color: #333333;
 	}
 
-	.icon-shoppingcard {
+	.actions .icon-shoppingcard {
 		border-radius: 50%;
-		padding: 8upx 10upx;
 		background: #F15858;
 		color: #FFFFFF;
 		font-size: 36upx;
+		line-height: 2em;
+		text-align: center;
+		width: 72upx;
+		height: 72upx;
 	}
 </style>

@@ -7,7 +7,6 @@ import GoodsGrid from './components/goods-grid';
 // Vue.prototype.lazyLoader = lazyLoader;
 
 Vue.config.productionTip = true;
-Vue.prototype.CONSTS = CONSTS;
 Vue.prototype.request = options => {
 	options.url = 'https://wx.lpp.catkid.cn:10443' + options.url;
 	uni.request(options);
