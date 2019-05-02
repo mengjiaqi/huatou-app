@@ -1,6 +1,6 @@
 <template>
 	<view class="list">
-		<navigator class="item" hover-class="none" url="/pages/product/product" v-for="(item, index) in list" :key="index" v-if="index < limits">
+		<navigator class="item" hover-class="none" url="/pages/coupon/product" v-for="(item, index) in list" :key="index" v-if="index < limits">
 			<view class="grace-flex">
 				<view class="image">
 					<image :src="item.pict_url" mode="aspectFit" lazy-load></image>
@@ -9,7 +9,7 @@
 					<view class="title">
 						{{item.title}}
 					</view>
-					<view class="ads">
+					<view class="desc">
 						{{item.item_description}}
 					</view>
 					<view class="price">

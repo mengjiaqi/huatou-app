@@ -1,86 +1,203 @@
 <template>
-	<view class="page">
-		<view class="grace-tab tab-title-wrapper">
-			<view class="tab-home grace-tab-title">
-				<view :class="[currentIndex === 0 ? 'grace-tab-current' : '']" id="tabItem-0" @tap="tabChange">首页</view>
-			</view>
-			<view class="tab-cats">
-				<scroll-view class="grace-tab-title" scroll-x>
-					<view v-for="(tab, index) in tabs" :class="[currentIndex === (index + 1) ? 'grace-tab-current' : '']" :id="'tabItem-'+(index+1)"
-					 @tap="tabChange" :key="index">{{tab.name}}</view>
+	<scroll-view scroll-y>
+		<view class="panel">
+			<swiper-image :items="swipers"></swiper-image>
+			<view class="xl-padding">
+				<view class="grace-space-between channels">
+					<view class="grace-space-between flex-item">
+						<view class="channel flex-item" :class="{'current': currentChannel == 0}" @tap="changeChannel" id="channel-0">正在抢购</view>
+						<view class="channel flex-item" :class="{'current': currentChannel == 1}" @tap="changeChannel" id="channel-1">即将开抢</view>
+					</view>
+					<view class="flex-item">
+						<view class="count-down" v-if="currentChannel == 0">
+							<text :style="{color}">距结束</text>
+							<uni-countdown background-color="#f0f0f0" border-color="#f0f0f0" :color="color" :day="1" :show-day="false"></uni-countdown>
+						</view>
+					</view>
+				</view>
+				<scroll-view class="categories" :scroll-into-view="categoryInView" v-if="currentChannel == 0" scroll-x
+				 scroll-with-animation>
+					<view class="category" v-for="(c, i) in categories" :id="'cat-'+i" :key="i" :class="{current: currentCategory == i}"
+					 @tap="changeCategory">
+						<text>正在抢购</text>
+						<text class="flag"></text>
+					</view>
+				</scroll-view>
+				<scroll-view class="categories" :scroll-into-view="categoryInView" v-if="currentChannel == 1" scroll-x
+				 scroll-with-animation>
+					<view class="category" v-for="(c, i) in categories" :id="'cat-'+i" :key="i" :class="{current: currentCategory == i}"
+					 @tap="changeCategory">
+						<text>即将开抢</text>
+						<text class="flag"></text>
+					</view>
 				</scroll-view>
 			</view>
 		</view>
-		<swiper class="grace-tab-swiper-full" :current="currentIndex" @change="swiperChange" :style="{height: mainHeight + 'px'}">
-			<swiper-item><content-main></content-main></swiper-item>
-			<swiper-item v-for="(tab, index) in tabs" :key="index">
-				<content-category :cid="tab.name" :initialize="currentIndex === index+1"></content-category>
-			</swiper-item>
-		</swiper>
-	</view>
+		<view class="xl-padding">
+			<view class="panel">
+				<view class="xl-padding">
+					<product-list :list="productList"></product-list>
+				</view>
+			</view>
+		</view>
+		<view class="xl-actions">
+			<view class="item">
+				<view class="grace-icons icon-share"></view>
+				<text>分享</text>
+			</view>
+		</view>
+	</scroll-view>
 </template>
 
 <script>
-	import ContentMain from './content-main';
-	import ContentCategory from './content-category';
+	import SwiperImage from '../../components/swiper-image';
+	import ProductList from '../../components/product-list';
+	import ProductGrid from '../../components/product-grid';
+
+	import {
+		uniCountdown
+	} from '@dcloudio/uni-ui';
+
 	export default {
-		components: { ContentMain, ContentCategory },
+		components: {
+			SwiperImage,
+			uniCountdown,
+			ProductList,
+			ProductGrid
+		},
 		data() {
-			return {
-				currentIndex: 0,
-				mainHeight: 500,
-				goods: [],
-				tabs: [
-					{ name: '母婴' },
-					{ name: '生鲜' },
-					{ name: '食品' },
-					{ name: '女装' },
-					{ name: '彩妆' },
-					{ name: '洗护' },
-					{ name: '内衣' },
-					{ name: '百货' },
-					{ name: '家电' },
-					{ name: '家居' },
-					{ name: '数码' }
-				]
+			const productList = [];
+			for(let i=0;i<10;i++) {
+				productList.push({
+					image: 'http://temp.im/800x800',
+					title: '商品名称商品名称商品名称商品名称商品名称商品名称',
+					originalPrice: 199,
+					favourPrice: 299,
+					tip: '秒杀',
+					volume: 50000,
+					remain: 1000
+				});
 			}
-		},
-		onLoad() {
-		},
-		onReady() {
-			const _self = this;
-			const system = this.CONSTS.SYSTEM;
-			uni.createSelectorQuery().select('.tab-title-wrapper').boundingClientRect(data => {
-				_self.mainHeight = system.windowHeight - data.height;
-			}).exec();
+			return {
+				swipers: [1, 1],
+				categories: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+				color: '#666666',
+				currentChannel: '0',
+				currentCategory: '0',
+				renderImage: true,
+				productList
+			}
 		},
 		methods: {
-			tabChange(e) {
-				this.currentIndex = parseInt(e.target.id.split('-')[1]);
+			changeChannel(e) {
+				this.currentChannel = e.currentTarget.id.replace('channel-', '');
+				this.currentCategory = '0';
 			},
-			swiperChange(e) {
-				this.currentIndex = e.target.current;
+			changeCategory(e) {
+				this.currentCategory = e.currentTarget.id.replace('cat-', '');
 			}
+		},
+		computed: {
+			categoryInView() {
+				const current = parseInt(this.currentCategory);
+				if (current > 2) {
+					return 'cat-' + (current - 2);
+				}
+				return 'cat-0';
+			}
+		},
+		onShareAppMessage(share) {
+			return {
+				title: '领票票',
+				path: '/pages/coupon/index'
+			};
 		}
 	}
 </script>
 
 <style>
-	.tab-title-wrapper {
-		width: 100%;
-		height: 84upx;
-		position: relative;
-		background: #FFFFFF;
+	.channels {
+		border-bottom: 4upx solid #f15858;
 	}
-	.tab-home {
-		width: 112upx;
-		box-shadow: #000000;
+
+	.channel,
+	.count-down {
+		padding: 8upx 0;
 	}
-	.tab-cats {
-		position: absolute;
-		left: 114upx; right: 0; top: 0;
+
+	.channel {
+		background: #F0F0F0;
+		color: #666666;
+		text-align: center;
+		border-top-left-radius: 8upx;
+		border-top-right-radius: 8upx;
+		margin-right: 8upx;
+		font-weight: 500;
 	}
-	.tab-cats view:first-child {
-		margin-left: 28rpx;
+
+	.channel.current {
+		background: #f15858;
+		color: #FFFFFF;
+	}
+
+	.count-down {
+		text-align: right;
+		font-size: 24upx;
+	}
+
+	.categories {
+		white-space: nowrap;
+		text-align: center;
+	}
+
+	.categories .category {
+		display: inline-flex;
+		padding: 16upx 16upx 0;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.categories .current {
+		font-size: 32upx;
+		font-weight: 700;
+	}
+
+	.categories .flag {
+		width: 48upx;
+		border-top: 4upx solid #F15858;
+		border-bottom: 4upx solid #F15858;
+		border-radius: 4upx;
+		display: none;
+		margin-top: 4upx;
+	}
+
+	.categories .current .flag {
+		display: block;
+	}
+	.xl-actions {
+		position: fixed;
+		right: 16upx;
+		bottom: 96upx;
+	}
+	.xl-actions .item {
+		background: #000000;
+		opacity: 0.6;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 1em;
+		font-size: 24upx;
+		display: flex;
+		flex-direction: column;
+		align-content: center;
+		align-items: center;
+		width: 96upx;
+		height: 96upx;
+	}
+	.xl-actions .item, .xl-actions .grace-icons {
+		color: #FFFFFF;
+	}
+	.xl-actions .grace-icons {
+		font-size: 42upx;
+		line-height: 1.5em;
 	}
 </style>

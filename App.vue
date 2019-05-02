@@ -20,6 +20,7 @@
 	image{will-change: transform}
 	page, .page, .bg-default { background: #f8f8f8; }
 	.xl-padding { padding: 16rpx ;}
+	.flex-item { flex: 1 }
 	
 	.grace-tab-current {
 		color: #f15858;
@@ -34,5 +35,8 @@
 	}
 	.grace-tab-title view:last-child {
 		margin-right: 8rpx;
+	}
+	.panel {
+		background: #FFFFFF;
 	}
 </style>

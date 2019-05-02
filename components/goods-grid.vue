@@ -1,6 +1,6 @@
 <template>
 	<view class="goods">
-		<navigator class="item" hover-class="none" url="/pages/product/product" v-for="(item, index) in list" :key="index" v-if="index < limits">
+		<navigator class="item" hover-class="none" url="/pages/coupon/product" v-for="(item, index) in list" :key="index" v-if="index < limits">
 			<view class="inner">
 				<view class="image">
 					<image :src="item.pict_url" mode="widthFix"></image>

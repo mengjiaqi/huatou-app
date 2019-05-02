@@ -2,11 +2,14 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
+			"style": {}
+		}, {
+			"path": "pages/coupon/index",
 			"style": {
 				"navigationBarTitleText": "领票票"
 			}
 		}, {
-			"path": "pages/product/product",
+			"path": "pages/coupon/goods",
 			"style": {
 				"navigationBarTitleText": "商品详情"
 			}
@@ -24,9 +27,14 @@
 				"navigationBarTitleText": "搜索"
 			}
 		}, {
-			"path": "pages/product/detail",
+			"path": "pages/groupon/product",
 			"style": {
 				"navigationBarTitleText": "商品详情"
+			}
+		}, {
+			"path": "pages/groupon/index",
+			"style": {
+				"navigationBarTitleText": "团购"
 			}
 		}
 	],
@@ -34,8 +42,13 @@
 		"color": "#707070",
 		"selectedColor": "#f15858",
 		"list": [{
-			"text": "精选",
+			"text": "首页",
 			"pagePath": "pages/index/index",
+			"iconPath": "static/tabs/home.png",
+			"selectedIconPath": "static/tabs/home-selected.png"
+		}, {
+			"text": "精选",
+			"pagePath": "pages/coupon/index",
 			"iconPath": "static/tabs/home.png",
 			"selectedIconPath": "static/tabs/home-selected.png"
 		}, {

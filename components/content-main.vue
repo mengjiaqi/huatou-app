@@ -1,11 +1,7 @@
 <template>
 	<scroll-view class="content" scroll-y>
 		<view class="panel">
-			<swiper class="main-swiper">
-				<swiper-item>
-					<image src="http://temp.im/1125x480" mode="widthFix"></image>
-				</swiper-item>
-			</swiper>
+			<swiper-image :items="swipers"></swiper-image>
 			<view class="grace-grids channels">
 				<view class="items" v-for="(item, index) in grids" :key="index">
 					<view class="icon">
@@ -38,7 +34,7 @@
 				<view class="list" :class="{'current': recommend === 1}">1</view>
 			</view>
 		</view>
-		
+
 		<!-- 热卖排行 -->
 		<view class="panel ranking">
 			<view class="panel-header grace-flex">
@@ -51,7 +47,7 @@
 				<goods-ranking :list="rankings" :limit="10"></goods-ranking>
 			</view>
 		</view>
-		
+
 		<!-- 猜你喜欢 -->
 		<view class="panel favorite">
 			<view class="panel-header grace-flex">
@@ -68,17 +64,20 @@
 </template>
 
 <script>
-	import GoodsRanking from '../../components/goods-ranking';
-	
+	import GoodsRanking from './goods-ranking';
+	import SwiperImage from './swiper-image';
+
 	export default {
 		data() {
 			return {
 				recommend: 0,
-				goods: []
+				goods: [],
+				swipers: [1, 1]
 			};
 		},
 		components: {
-			GoodsRanking
+			GoodsRanking,
+			SwiperImage
 		},
 		computed: {
 			grids() {
@@ -104,7 +103,9 @@
 			const _self = this;
 			this.request({
 				url: '/top/dg-item-coupon?q=小龙虾',
-				success({ data }) {
+				success({
+					data
+				}) {
 					_self.goods = data.results.tbk_coupon;
 				}
 			})
@@ -113,10 +114,6 @@
 </script>
 
 <style>
-	.main-swiper image {
-		width: 100%;
-	}
-
 	.channels {
 		border-right: 2upx solid #F8F8F8;
 		border-bottom: 2upx solid #F5F6F8;
@@ -128,15 +125,18 @@
 		border-top: 2upx solid #F5F6F8;
 		color: #A5A7B2;
 	}
+
 	.panel {
 		margin-top: 20rpx;
 		background: #FFFFFF;
 		border-top: 2upx solid #F5F6F8;
 	}
+
 	.panel:first-child {
 		margin-top: 0;
 		border-top: none;
 	}
+
 	.panel,
 	.panel-header {
 		border-bottom: 2upx solid #F5F6F8;
@@ -162,7 +162,7 @@
 	.recommend .list.current {
 		display: block;
 	}
-	
+
 	.favorite .panel-body {
 		padding: 8upx;
 	}

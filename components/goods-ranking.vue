@@ -1,6 +1,6 @@
 <template>
 	<scroll-view class="grace-scroll-x" scroll-x>
-		<navigator class="item" hover-class="none" url="/pages/product/product" v-for="(item, index) in list" :key="index" v-if="index < limits">
+		<navigator class="item" hover-class="none" url="/pages/coupon/product" v-for="(item, index) in list" :key="index" v-if="index < limits">
 			<view class="image">
 				<image :src="item.pict_url" mode="aspectFit"></image>
 			</view>
